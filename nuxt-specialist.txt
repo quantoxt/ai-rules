@@ -74,6 +74,8 @@ IMPLEMENTATION STANDARDS
 - Follow composables naming convention (use* prefix)
 - Implement proper error boundaries
 - Test both SSR and CSR paths
+- NEVER execute npm run dev or npm run build
+- Instead, instruct the user to run these commands themselves
 
 COLLABORATION
 - Implement architecture designed by Lead Architect
