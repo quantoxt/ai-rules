@@ -1,0 +1,123 @@
+SHADCN-VUE INSTALLATION GUIDE FOR NUXT 4 PROJECTS
+
+Follow these steps in exact order to properly install shadcn-vue in a Nuxt project.
+
+==============================================================================
+STEP 1: INSTALL REQUIRED DEPENDENCIES
+==============================================================================
+
+Execute these npm install commands:
+
+npm install -D typescript
+npm install tailwindcss @nuxtjs/tailwindcss@7.0.0-beta.1
+
+IMPORTANT: Wait for installation to complete before proceeding to Step 2.
+
+==============================================================================
+STEP 2: CREATE TAILWIND CSS FILE
+==============================================================================
+
+Create a new file at this path: app/assets/css/tailwind.css
+
+NOTE: If the directories app/assets/css do not exist, create them first:
+1. Check if app/assets exists, if not create it
+2. Check if app/assets/css exists, if not create it
+3. Then create the tailwind.css file inside app/assets/css
+
+==============================================================================
+STEP 3: UPDATE NUXT CONFIGURATION
+==============================================================================
+
+Open the nuxt.config.ts file and add tailwindcss to the modules array:
+
+modules: ['@nuxtjs/tailwindcss']
+
+If modules array already exists, append '@nuxtjs/tailwindcss' to it.
+If modules array doesn't exist, create it with '@nuxtjs/tailwindcss'.
+
+==============================================================================
+STEP 4: UPDATE TYPESCRIPT CONFIGURATION
+==============================================================================
+
+Replace the ENTIRE content of tsconfig.json with this exact configuration:
+
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "files": [],
+  "references": [
+    {
+      "path": "./.nuxt/tsconfig.app.json"
+    },
+    {
+      "path": "./.nuxt/tsconfig.server.json"
+    },
+    {
+      "path": "./.nuxt/tsconfig.shared.json"
+    },
+    {
+      "path": "./.nuxt/tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./app/*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    }
+  }
+}
+
+==============================================================================
+STEP 5: ADD SHADCN-NUXT MODULE
+==============================================================================
+
+Execute this command:
+
+npx nuxi@latest module add shadcn-nuxt
+
+IMPORTANT: Wait for this command to complete before proceeding.
+
+==============================================================================
+STEP 6: CONFIGURE SHADCN IN NUXT CONFIG
+==============================================================================
+
+Open nuxt.config.ts and add this shadcn configuration object:
+
+shadcn: {
+  prefix: '',
+  componentDir: './app/components/ui'
+}
+
+Add this at the root level of the export default defineNuxtConfig({}) object.
+
+==============================================================================
+STEP 7: PREPARE NUXT
+==============================================================================
+
+Execute this command:
+
+npx nuxi prepare
+
+IMPORTANT: Wait for this command to complete before proceeding to Step 8.
+
+==============================================================================
+STEP 8: INITIALIZE SHADCN-VUE
+==============================================================================
+
+Execute this command:
+
+npx shadcn-vue@latest init
+
+When prompted, select "neutral" for the base color.
+
+==============================================================================
+INSTALLATION COMPLETE
+==============================================================================
+
+After completing all 8 steps, shadcn-vue should be properly installed and configured in your Nuxt 4 project. You can now add components using:
+
+npx shadcn-vue@latest add [component-name]
