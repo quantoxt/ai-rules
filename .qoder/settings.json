@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "ask": [
+      "Read(!/home/quantoxt/Documents/PROJECTS/NUXT/AI Rules/**)",
+      "Edit(!/home/quantoxt/Documents/PROJECTS/NUXT/AI Rules/**)"
+    ],
+    "allow": [
+      "Read(/home/quantoxt/Documents/PROJECTS/NUXT/AI Rules/**)",
+      "Edit(/home/quantoxt/Documents/PROJECTS/NUXT/AI Rules/**)"
+    ]
+  },
+  "memoryImport": {},
+  "monitoring": {}
+}
